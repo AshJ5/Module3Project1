@@ -1,0 +1,21 @@
+/* helpful links for me:
+
+1.) css typewriter effect: https://www.youtube.com/shorts/fTOcWMD_5pk
+2.) 
+
+*/
+
+body {
+    /* Note: if i put display before background-color, it'll make the background default to the index.css */
+    background-color: black;
+    display: flex;
+}
+
+.container, .row, .col {
+    color: white;
+}
+
+/* Bootstrap overrides - make sure text is white */
+.container * {
+    color: white;
+}
