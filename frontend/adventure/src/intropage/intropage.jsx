@@ -10,13 +10,13 @@ function IntroPage() {
         <>
         <Container>
             <Row>
-                <Col md={4} className="offset-md-4">
+                <Col>
                 In the mythical land of
                 </Col>
             </Row>
             <Row>
                 <Col>
-                AMERICA
+                <h1>AMERICA</h1>
                 </Col>
             </Row>
             <Row>

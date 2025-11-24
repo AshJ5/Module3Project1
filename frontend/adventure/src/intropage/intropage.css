@@ -5,10 +5,13 @@
 
 */
 
+#root {
+    text-align: left;
+}
+
 body {
     /* Note: if i put display before background-color, it'll make the background default to the index.css */
     background-color: black;
-    display: flex;
 }
 
 .container, .row, .col {
