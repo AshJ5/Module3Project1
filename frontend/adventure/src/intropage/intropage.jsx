@@ -5,9 +5,17 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './intropage.css'; 
 
-function IntroPage() {
+function IntroPage({ onAnimationComplete }) {
+    const handleAnimationEnd = (e) => {
+        // Only trigger on the last animation (row-3)
+        if (e.target.classList.contains('row-3')) {
+            onAnimationComplete();
+        }
+    };
+
     return (
         <>
+        <div id= 'wrap'>
         <Container>
             <Row className='animate-row row-1'>
                 <Col className='rolling'>
@@ -19,12 +27,16 @@ function IntroPage() {
                 <h1 className="boldonse-regular">AMERICA</h1>
                 </Col>
             </Row>
-            <Row className='rolling animate-row row-3'>
-                <Col md={{span: 3, offset: 11}}>
+            <Row 
+                className='rolling animate-row row-3'
+                onAnimationEnd={handleAnimationEnd}
+            >
+                <Col md={{span: 3, offset: 9}}>
                 Welcome to...
                 </Col>
             </Row>
         </Container>
+        </div>
         </>
     );
 }
