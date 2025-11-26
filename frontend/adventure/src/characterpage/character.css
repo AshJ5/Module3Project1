@@ -1,0 +1,22 @@
+/* Character page styles */
+
+/* Fix dropdown and input text visibility */
+.form-select option {
+    color: black;
+    background-color: white;
+}
+
+.form-select,
+.form-control,
+.form-label,
+.text-muted {
+    color: black;
+}
+
+/* Style the character and weapon preview images */
+.character-preview,
+.weapon-preview {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}

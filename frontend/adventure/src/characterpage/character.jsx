@@ -8,6 +8,17 @@ import Button from 'react-bootstrap/Button';
 import charBlank from '../assets/placeholder/charblank.png';
 import wepBlank from '../assets/placeholder/wepblank.png';
 
+// Dynamically import all character and weapon images using Vite's glob import
+const characterImages = import.meta.glob('../assets/*/char*.png', { eager: true, import: 'default' });
+const weaponImages = import.meta.glob('../assets/*/wep*.png', { eager: true, import: 'default' });
+
+// Combine into a single image map with proper paths
+const imageMap = Object.entries({ ...characterImages, ...weaponImages }).reduce((acc, [key, value]) => {
+    const path = key.replace('../assets', '/assets');
+    acc[path] = value;
+    return acc;
+}, {});
+
 
 function CharacterPage({ characterImg, weaponImg }) {
     const [name, setName] = useState('');
@@ -31,21 +42,31 @@ function CharacterPage({ characterImg, weaponImg }) {
     // Fetch weapons when class changes
     useEffect(() => {
         if (selectedClass) {
+            console.log('Fetching weapons for class:', selectedClass);
             fetch(`http://localhost:8000/api/classes/${selectedClass}/weapons`)
                 .then(res => res.json())
-                .then(data => setAvailableWeapons(data))
+                .then(data => {
+                    console.log('Weapons fetched for class', selectedClass, ':', data);
+                    setAvailableWeapons(data);
+                })
                 .catch(error => console.error('Error fetching weapons:', error));
+        } else {
+            setAvailableWeapons([]);
         }
     }, [selectedClass]);
 
     // Compute images based on selections
-    const classImage = selectedClass 
+    const classImagePath = selectedClass 
         ? classes.find(c => c.id === parseInt(selectedClass))?.icon_path || ''
         : '';
     
-    const weaponImage = selectedWeapon
+    const weaponImagePath = selectedWeapon
         ? availableWeapons.find(w => w.id === parseInt(selectedWeapon))?.sprite_image || ''
         : '';
+    
+    // Map paths to actual imported images
+    const classImage = classImagePath ? imageMap[classImagePath] : '';
+    const weaponImage = weaponImagePath ? imageMap[weaponImagePath] : '';
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -84,10 +105,10 @@ function CharacterPage({ characterImg, weaponImg }) {
         <>
         <Container>
         <Row>
-            <Col md={{span: 3}}>
+            <Col md={{span: 3, offset: 2}}>
                 <img src={characterImg || classImage || charBlank} alt="character" className="character-preview" />
             </Col>
-            <Col md={{span: 6}}>
+            <Col md={{span: 6, offset: 1}}>
                 <img src={weaponImg || weaponImage || wepBlank} alt="weapon" className="weapon-preview" />
             </Col>
         </Row>
