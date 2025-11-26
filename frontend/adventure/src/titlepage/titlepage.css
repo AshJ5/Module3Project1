@@ -1,4 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Coral+Pixels&family=Oswald:wght@200..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
 body {
-    background: #c3b322;
-background: radial-gradient(circle, rgba(195, 179, 34, 1) 14%, rgba(247, 0, 0, 1) 43%, rgba(253, 187, 45, 1) 30%);
+background: rgb(253, 187, 45)
+}
+
+#banner {
+    justify-content: center;
+    position: fixed;
+    width: 948.67px;
+    height: 533.33px;
+    animation: slideUp 4s forwards;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0) translateX(10%);
+    }
+}
+
+button {
+    text-align: center;
+    justify-content: center;
+    color: white;
+    font-family: "Coral Pixels", serif;
+    font-weight: 400;
+    font-style: normal;
 }
