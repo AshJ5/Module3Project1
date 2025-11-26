@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey, Table
 from sqlalchemy.orm import relationship
-from database import Base
+from app.database import Base
 
 # Association table for class-weapon relationship
 class_valid_weps = Table(

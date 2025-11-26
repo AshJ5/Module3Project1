@@ -1,9 +1,15 @@
 """
 Script to populate the database with initial data for classes, weapons, and their relationships
 """
+from app.models import Class, Weapon, class_valid_weps
+from app.database import SessionLocal, engine, Base
 from sqlalchemy.orm import Session
-from database import SessionLocal, engine, Base
-from model import Class, Weapon, class_valid_weps
+import sys
+from pathlib import Path
+
+# Add parent directory to path to import app modules
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 
 # Create all tables
 Base.metadata.create_all(bind=engine)
@@ -59,13 +65,13 @@ def populate_database():
         weapons_data = [
             {
                 "id": 1,
-                "name": "Meat Slicer",
+                "name": "Gouda Cheese Block",
                 "damage_type": "Slashing",
                 "sprite_image": "/assets/deli/wep1.png"
             },
             {
                 "id": 2,
-                "name": "Deli Knife",
+                "name": "Sausage Sword",
                 "damage_type": "Piercing",
                 "sprite_image": "/assets/deli/wep2.png"
             },
@@ -77,13 +83,13 @@ def populate_database():
             },
             {
                 "id": 4,
-                "name": "Delivery Crate",
+                "name": "Creepy Smile",
                 "damage_type": "Blunt",
                 "sprite_image": "/assets/milkman/wep4.png"
             },
             {
                 "id": 5,
-                "name": "Price Gun",
+                "name": "Retail Pole Hook",
                 "damage_type": "Ranged",
                 "sprite_image": "/assets/retail/wep5.png"
             },
@@ -95,13 +101,13 @@ def populate_database():
             },
             {
                 "id": 7,
-                "name": "Spatula",
+                "name": "Skillet",
                 "damage_type": "Slashing",
                 "sprite_image": "/assets/wafflehouse/wep7.png"
             },
             {
                 "id": 8,
-                "name": "Waffle Iron",
+                "name": "Waffle House Fist Style",
                 "damage_type": "Blunt",
                 "sprite_image": "/assets/wafflehouse/wep8.png"
             }

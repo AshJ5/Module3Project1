@@ -2,9 +2,9 @@ from typing import List
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
-from database import SessionLocal, engine, Base, get_db
-from model import Character, Class, Weapon
-from schemas import (
+from app.database import SessionLocal, engine, Base, get_db
+from app.models import Character, Class, Weapon
+from app.schemas import (
     CharacterCreate, CharacterUpdate, CharacterOut, CharacterDetailed,
     ClassOut, WeaponOut
 )
