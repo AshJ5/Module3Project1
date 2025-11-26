@@ -7,3 +7,4 @@ CREATE TABLE characters (
     FOREIGN KEY (class_id) REFERENCES classes (id),
     FOREIGN KEY (equipped_weapon_id) REFERENCES weapons (id)
 );
+
