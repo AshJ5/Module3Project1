@@ -6,7 +6,7 @@ background: rgb(253, 187, 45)
 
 #banner {
     justify-content: center;
-    position: fixed;
+    position: relative;
     width: 948.67px;
     height: 533.33px;
     animation: slideUp 4s forwards;

@@ -1,14 +1,15 @@
 """
 Script to populate the database with initial data for classes, weapons, and their relationships
 """
-from app.models import Class, Weapon, class_valid_weps
-from app.database import SessionLocal, engine, Base
-from sqlalchemy.orm import Session
 import sys
 from pathlib import Path
 
 # Add parent directory to path to import app modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from app.models import Class, Weapon, class_valid_weps
+from app.database import SessionLocal, engine, Base
+from sqlalchemy.orm import Session
 
 
 # Create all tables
